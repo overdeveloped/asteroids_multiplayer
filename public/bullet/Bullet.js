@@ -1,49 +1,71 @@
 class Bullet
 {
-    constructor(socketId, playerX, playerY, heading)
+    constructor(id, x, y, velocity)
     {
-        this.id = socketId;
-        this.position = createVector(playerX, playerY);
-        this.velocity = createVector(0, 0);
-        this.acceleration = createVector(0, 0);
-        this.radius = 20;
-        this.heading = heading;
-        this.rotation = 0;
+        this.id = id;
+        this.position = createVector(x, y);
+        this.velocity = velocity;
+        // this.velocity = velocity.mult(5);
+        // this.velocity = p5.Vector.sub(this.velocity, this.position);
+        // this.velocity.limit(5);
+
+        this.lifespan = 40;
+        this.selfDestruct = false;
+
+        this.red = 0;
+        this.green = 0;
+        this.blue = 0;
+
     }
 
     update()
     {
-
+        // this.velocity = p5.Vector.sub(this.velocity, this.position);
+        // this.velocity.limit(5);
         this.position.add(this.velocity);
-        this.velocity.mult(0.95);
-        // this.acceleration.setMag(0.01);
-        // this.acceleration.sub(0.1);
-        // this.velocity.limit(1)
-        this.turn();
+        this.lifespan = this.lifespan - 1;
 
+        if (this.lifespan <= 0)
+        {
+            this.selfDestruct = true;
+        }
+
+        // console.log(this.lifespan);
         this.checkEdges();
     }
 
     draw()
     {
-        noStroke();
-        // fill(255, 0, 255);
-        // ellipse(this.position.x, this.position.y, 20, 20);
-        fill(0, 0, 255);
-        push();
-        translate(this.position.x, this.position.y);
-        rotate(this.heading + PI / 2);
-        triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
-        pop();
+        fill(this.red, this.green, this.blue);
+        ellipse(this.position.x, this.position.y, 10, 10);
     }
 
-    setRotation(angle)
+    setColour(red, green, blue)
     {
-        this.rotation = angle;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
     }
 
-    setHeading(heading)
+    checkEdges()
     {
-        this.heading = heading;
+        if (this.position.x < 0)
+        {
+            this.position.x = width;
+        }
+        if (this.position.x > width)
+        {
+            this.position.x = 0;
+        }
+        if (this.position.y < 0)
+        {
+            this.position.y = height;
+        }
+        if (this.position.y > height)
+        {
+            this.position.y = 0;
+        }
+        
     }
+
 }

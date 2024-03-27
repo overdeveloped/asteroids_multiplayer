@@ -61,10 +61,11 @@ let acceleration = 0.1;
 // FRAMERATE
 let lastLoop = new Date();
 
+
 function setup()
 {
     frameRate(60);
-
+    player = new Player(9999999999999999, -500, -500);
     otherData =
     {
         x: -500,
@@ -119,6 +120,8 @@ function setup()
 
     socket.on("start", (data, err) =>
     {
+        console.log("START");
+        loop();
         if (data.width)
         {
             canvasWidth = data.width;
@@ -183,6 +186,7 @@ function setup()
 
 
 
+    noLoop();
 }
 
 
