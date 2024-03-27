@@ -1,0 +1,51 @@
+
+<!-- file:///G:/My_Repos/P5/p5-rts-like-warcraft/rts-in-node/public/index.html -->
+
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js example</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #1b1b1b;
+    }
+  </style>
+  <!-- <script src="maths/maths.js" type="module"></script> -->
+  <script src="socket_io/socket.io.js"></script>
+  <!-- <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script> -->
+  <script src="p5/p5.js"></script>
+  <script src="mobile/mobile.js"></script>
+  <script src="grid/grid.js"></script>
+  <script src="spacial_hash_grid/spacial_hash_grid.js"></script>
+  <script src="cell/cell.js"></script>
+  <script src="astar/astar.js"></script>
+  <script src="path/path.js"></script>
+  <script src="player/player.js"></script>
+  <script src="bullet/bullet.js"></script>
+  <script src="asteroid/asteroid.js"></script>
+  <!-- <script src="../addons/p5.sound.js"></script> -->
+  <script src="main.js"></script>
+</head oncontextmenu="return false;">
+
+<body>
+  <main>
+  </main>
+</body>
+<script language="javascript">
+  document.onmousedown = disableRightclick;
+  status = "Disabled";
+  function disableRightclick(event)
+  {
+    if(event.button==2)
+     {
+      //  alert(status);
+       return false;    
+     }
+  }
+  </script>
+</html>
